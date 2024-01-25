@@ -5,10 +5,15 @@ namespace SQS.Consumidor
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             Console.WriteLine("Hello, World!");
             var client = new AmazonSQSClient(RegionEndpoint.SAEast1);
+            var request = new ReceiveMessageRequest
+            {
+                QueueUrl = "https://sqs.sa-east-1.amazonaws.com/284213124642/Teste"
+            };
+            await client.ReceiveMessageAsync(request);
         }
     }
 }
