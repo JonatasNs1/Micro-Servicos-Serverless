@@ -14,6 +14,12 @@ namespace SQS.Consumidor
                 QueueUrl = "https://sqs.sa-east-1.amazonaws.com/284213124642/Teste"
             };
            var response = await client.ReceiveMessageAsync(request);
+
+            foreach (var mensagem in response.Messages)
+            {
+                Console.WriteLine(mensagem.Body);
+                client.DeleteMessageAsync("https://sqs.sa-east-1.amazonaws.com/284213124642/Teste", mensagem.ReceiptHandle)
+            }
         }
     }
 }
