@@ -13,7 +13,7 @@ namespace SQS.Consumidor
             {
                 QueueUrl = "https://sqs.sa-east-1.amazonaws.com/284213124642/Teste"
             };
-            await client.ReceiveMessageAsync(request);
+           var response = await client.ReceiveMessageAsync(request);
         }
     }
 }
